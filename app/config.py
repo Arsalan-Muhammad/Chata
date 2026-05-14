@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings
+from pydantic.env_settings import BaseSettings
 
 class Settings(BaseSettings):
     database_hostname: str
