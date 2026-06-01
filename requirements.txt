@@ -12,3 +12,8 @@ charset-normalizer
 urllib3
 certifi
 click
+python-jose
+passlib
+cryptography
+six
+typing_extensions
