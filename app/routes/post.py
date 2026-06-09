@@ -1,4 +1,3 @@
-from app import auth
 
 from .. import models , schemas , ultis , auth
 from fastapi import FastAPI, HTTPException, status, Depends , APIRouter
