@@ -14,7 +14,7 @@ origins = ["https://www.google.com"]
 
 @app.get("/")
 def home():
-    return {"meassage" : "Hello World"}
+    return {"meassage" : "Welcome to Home Page"}
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
