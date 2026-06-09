@@ -14,7 +14,6 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
     user_data = user.dict()
     user_data["password"] = hashed_password
-    user_data["password"] = hashed_password
 
     new_user = models.User(**user_data)
 
