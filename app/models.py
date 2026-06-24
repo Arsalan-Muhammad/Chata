@@ -1,6 +1,4 @@
-from tkinter import CASCADE
 from typing import Collection
-
 from sqlalchemy.sql import text
 from .database import Base
 from sqlalchemy import TIMESTAMP, Column, ForeignKey, Integer, String, Boolean
