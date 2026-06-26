@@ -1,6 +1,4 @@
-from tkinter import CASCADE
 from typing import Collection
-
 from sqlalchemy.sql import text
 from .database import Base
 from sqlalchemy import TIMESTAMP, Column, ForeignKey, Integer, String, Boolean
@@ -30,5 +28,5 @@ class User(Base):
 class Vote(Base):
     __tablename__ = "votes"
 
-    user_id = Column(Integer , ForeignKey("users.id" , ondelete=CASCADE) , nullable=False , primary_key=True)  
-    post_id = Column(Integer , ForeignKey("posts.id" , ondelete=CASCADE) , nullable=False , primary_key=True)  
+    user_id = Column(Integer , ForeignKey("users.id" , ondelete="CASCADE") , nullable=False , primary_key=True)  
+    post_id = Column(Integer , ForeignKey("posts.id" , ondelete="CASCADE") , nullable=False , primary_key=True)  
