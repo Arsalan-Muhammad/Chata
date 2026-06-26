@@ -1,4 +1,4 @@
-from app import schemas
+from ..app import schemas
 import pytest
 
 from tests.conftest import authorized_client

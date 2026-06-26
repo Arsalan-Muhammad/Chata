@@ -1,7 +1,7 @@
 
 import pytest
-from app import schemas
-from app import config
+from ..app import schemas
+from ..app import config
 from jose import JWTError , jwt
 
 def test_create_user(client):
