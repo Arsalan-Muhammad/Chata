@@ -1,28 +1,31 @@
 name: Build and Deploy Code
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
   job1:
-    Enviroment:
+    environment:
       name: testing
-    env:
-      DATABASE_HOSTNAME: ${{DATABASE_HOSTNAME}}
-      DATABASE_PORT: ${{DATABASE_PORT}}
-      DATABASE_PASSWORD: ${{DATABASE_PASSWORD}}
-      DATABASE_NAME: ${{DATABASE_NAME}}
-      DATABASE_USERNAME: ${{DATABASE_USERNAME}}
-      SECRET_KEY: ${{SECRET_KEY}}
-      ALGORITHM: ${{ALGORITHM}}
-      ACCESS_TOKEN_EXPIRE_MINUTES: ${{ACCESS_TOKEN_EXPIRE_MINUTES}}
 
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_HOSTNAME: ${{ secrets.DATABASE_HOSTNAME }}
+      DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+      DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      ALGORITHM: ${{ secrets.ALGORITHM }}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+
     steps:
-      - name: Pulling git repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Python version 3.10.11
+      - name: Set up Python 3.10.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.10.11"
@@ -33,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Testing
+      - name: Run tests
         run: |
           pip install pytest
           export PYTHONPATH=$PWD
