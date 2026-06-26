@@ -24,4 +24,5 @@ jobs:
       - name: Testing
         run: |
           pip install pytest
+          pip install httpx2
           pytest
