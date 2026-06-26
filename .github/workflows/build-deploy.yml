@@ -4,15 +4,17 @@ on: [push, pull_request]
 
 jobs:
   job1:
+    Enviroment:
+      name: testing
     env:
-      DATABASE_HOSTNAME: "localhost"
-      DATABASE_PORT: "5432"
-      DATABASE_PASSWORD: "arsalan%40512"
-      DATABASE_NAME: "fastapi"
-      DATABASE_USERNAME: "postgres"
-      SECRET_KEY: "13qidifru3u103djd"
-      ALGORITHM: "HS256"
-      ACCESS_TOKEN_EXPIRE_MINUTES: = 60
+      DATABASE_HOSTNAME: ${{DATABASE_HOSTNAME}}
+      DATABASE_PORT: ${{DATABASE_PORT}}
+      DATABASE_PASSWORD: ${{DATABASE_PASSWORD}}
+      DATABASE_NAME: ${{DATABASE_NAME}}
+      DATABASE_USERNAME: ${{DATABASE_USERNAME}}
+      SECRET_KEY: ${{SECRET_KEY}}
+      ALGORITHM: ${{ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{ACCESS_TOKEN_EXPIRE_MINUTES}}
 
     runs-on: ubuntu-latest
 
@@ -34,4 +36,5 @@ jobs:
       - name: Testing
         run: |
           pip install pytest
+          export PYTHONPATH=$PWD
           pytest
