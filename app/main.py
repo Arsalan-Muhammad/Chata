@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI, HTTPException, status, Depends
 from sqlalchemy.orm import Session
 from typing import List
@@ -9,20 +10,20 @@ from .routes import post , users , auths , vote
 # models.Base.metadata.create_all(bind=engine)
 
 
-app = FastAPI()
+App = FastAPI()
 origins = ["https://www.google.com"]
 
-@app.get("/")
+@App.get("/")
 def home():
     return {"meassage" : "Welcome to Home Page"}
-app.add_middleware(
+App.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.include_router(post.router)
-app.include_router(users.router)
-app.include_router(auths.router)
-app.include_router(vote.router)
+App.include_router(post.router)
+App.include_router(users.router)
+App.include_router(auths.router)
+App.include_router(vote.router)
