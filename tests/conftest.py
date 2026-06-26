@@ -1,5 +1,4 @@
 from fastapi.testclient import TestClient
-import app
 from app.main import App
 from app.database import get_db, Base
 from sqlalchemy import create_engine
