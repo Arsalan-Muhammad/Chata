@@ -6,12 +6,12 @@ on:
 
 jobs:
   job1:
-
+    runs-on: ubuntu-latest
     environment:
       name: testing
 
     env:
-      DATABASE_HOSTNAME: ${{ secrets.DATABASE_HOSTNAME}}
+      DATABASE_HOSTNAME: ${{ secrets.DATABASE_HOSTNAME }}
       DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
       DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
       DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
@@ -35,7 +35,6 @@ jobs:
           --health-timeout=5s
           --health-retries=5
 
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
