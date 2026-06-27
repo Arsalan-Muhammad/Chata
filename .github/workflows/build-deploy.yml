@@ -25,13 +25,13 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_USER: ${{ env.DATABASE_USERNAME }}
-          POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
-          POSTGRES_DB: ${{ env.DATABASE_NAME }}_test
+          POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.DATABASE_NAME }}_test
         ports:
           - 5432:5432
         options: >-
-          --health-cmd="pg_isready -U ${{ env.DATABASE_USERNAME }} -d ${{ env.DATABASE_NAME }}_test"
+          --health-cmd="pg_isready -U ${{ secrets.DATABASE_USERNAME }} -d ${{ secrets.DATABASE_NAME }}_test"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
